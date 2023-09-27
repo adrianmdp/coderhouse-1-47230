@@ -2,11 +2,21 @@ import { useState } from "react";
 import "./App.css";
 import Auto from "./Auto";
 import Button from "./components/Button";
+import { Layout } from "./components/Layout";
+import { FormLogin } from "./components/FormLogin";
+import Users from "./components/Users";
 
 function App() {
+  const [saludo, setSaludo] = useState("");
+
+  const handleClickSlaudar = () => {
+    setSaludo("Hola mundo" + Math.random());
+  };
+
   return (
-    <div className="app" data-testid="" style={{ border: "2px solid #333" }}>
-      <header></header>
+    <Layout className="app" style={{ border: "2px solid #333" }}>
+      <Button onClick={handleClickSlaudar}>Saludar</Button>
+      <strong>{saludo}</strong>
       <nav>
         <ul>
           <li>
@@ -34,10 +44,19 @@ function App() {
       <main>
         <Auto />
         <hr />
-        <Button />
+        <Button id="form-login" type="submit">
+          <i className="fas fa-sign-in-alt"></i>
+          Iniciar sesión
+        </Button>
+
+        <hr />
+        <FormLogin />
+
+        <hr />
+
+        <Users saludo={saludo} otroValor="Lorem Ipsum" />
       </main>
-      <footer></footer>
-    </div>
+    </Layout>
   );
 }
 
