@@ -2,6 +2,8 @@ import { useState } from "react";
 import { getProducts } from "./services/products";
 import { products } from "./mock/products";
 import { useEffect } from "react";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 
 function App() {
   // const traerCafe = new Promise((resolve, reject) => {
@@ -133,6 +135,7 @@ function App() {
           </div>
         );
       })}
+      <Login />
     </>
   );
 }

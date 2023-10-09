@@ -1,0 +1,6 @@
+{
+  "routes": {
+    "public": ["/login", "/signup", "/", "/contact"],
+    "private": ["/profile", "/dashboard", "/settings"]
+  }
+}
