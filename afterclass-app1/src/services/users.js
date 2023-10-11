@@ -2,6 +2,7 @@ import inhabitants from "../data/inhabitants";
 
 const getUsers = () => {
   const users = inhabitants.map((inhabitant) => ({
+    id: inhabitant.id,
     thumbnail: inhabitant.thumbnail,
     name: inhabitant.name,
     age: inhabitant.age,
@@ -11,7 +12,9 @@ const getUsers = () => {
   return users;
 };
 
-const getUser = (id) => {};
+const getUser = (id) => {
+  return inhabitants.find((inhabitant) => inhabitant.id.toString() === id);
+};
 
 const createUser = (data) => {};
 

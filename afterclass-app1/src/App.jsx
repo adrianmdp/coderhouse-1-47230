@@ -1,35 +1,25 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Users from "./pages/Users";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import UserDetail from "./pages/UserDetail";
 
 function App() {
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <Users />
+      <BrowserRouter>
+        <Navbar />
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/comics-68dcf.appspot.com/o/200px-Ditto.png?alt=media&token=4576444c-7763-4290-8025-4b90f1906786&_gl=1*2ojbgm*_ga*MzY5NTAwMTYzLjE2OTY5Njk1MzY.*_ga_CW55HF8NVT*MTY5Njk4ODgyOC4yLjEuMTY5Njk4ODk0MC4xMi4wLjA."
+          alt=""
+        />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/users/:id" element={<UserDetail />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -1,6 +1,10 @@
+import { Button, Modal, Table } from "react-bootstrap";
 import User from "./User";
+import { useState } from "react";
 
 const TableUsers = ({ items }) => {
+  const [selectedItem, setSelectedItem] = useState();
+
   const renderItems = () => {
     const rta = [];
 
@@ -10,8 +14,10 @@ const TableUsers = ({ items }) => {
           key={items[i].name}
           thumbnail={items[i].thumbnail}
           name={items[i].name}
-          age={items[0].age}
-          weight={items[0].weight}
+          age={items[i].age}
+          weight={items[i].weight}
+          id={items[i].id}
+          onQuickViewClicked={() => setSelectedItem(items[i])}
           onDelete={(name) => {
             console.log(name);
           }}
@@ -22,17 +28,43 @@ const TableUsers = ({ items }) => {
   };
 
   return (
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Imagen</th>
-          <th>Nombre</th>
-          <th>Edad</th>
-          <th>Peso</th>
-        </tr>
-      </thead>
-      <tbody>{renderItems()}</tbody>
-    </table>
+    <>
+      <Table>
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>{renderItems()}</tbody>
+      </Table>
+      <Modal show={!!selectedItem} onHide={() => setSelectedItem(undefined)}>
+        {selectedItem && (
+          <>
+            <Modal.Header closeButton>
+              <Modal.Title>{selectedItem.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <img
+                className="img-fluid"
+                src={selectedItem.thumbnail}
+                alt={selectedItem.name}
+              />
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={() => setSelectedItem(undefined)}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </>
+        )}
+      </Modal>
+    </>
   );
 };
 

@@ -1,4 +1,17 @@
-const User = ({ thumbnail, name, age, weight, onDelete }) => {
+import { Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+
+const User = ({
+  id,
+  thumbnail,
+  name,
+  age,
+  weight,
+  onDelete,
+  onQuickViewClicked,
+}) => {
+  const navigate = useNavigate();
+
   return (
     <tr>
       <td>
@@ -8,7 +21,9 @@ const User = ({ thumbnail, name, age, weight, onDelete }) => {
       <td>{age}</td>
       <td>{weight}</td>
       <td>
-        <button onClick={() => onDelete(name)}>Eliminar</button>
+        <Button onClick={() => onDelete(name)}>Eliminar</Button>{" "}
+        <Link to={`/users/${id}`}>Ver detalle</Link>{" "}
+        <Button onClick={onQuickViewClicked}>Vista rapida</Button>
       </td>
     </tr>
   );
