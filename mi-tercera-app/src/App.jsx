@@ -6,11 +6,13 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Navbar from "./components/Navbar";
 import ServiceDetail from "./pages/ServiceDetail";
+import { AuthContext, AuthProvider } from "./contexts/Auth";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -19,9 +21,10 @@ function App() {
           <Route path="/services/algo" element={<Services />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
-      </BrowserRouter>
-    </div>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 

@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/Auth";
 
 const Services = () => {
+  const miContext = useContext(AuthContext);
+
+  console.log(miContext);
   return (
     <div>
       <h1>Services</h1>
