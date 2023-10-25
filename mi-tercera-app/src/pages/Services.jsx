@@ -2,10 +2,20 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/Auth";
 
-const Services = () => {
+const Services = ({isLoading}) => {
   const miContext = useContext(AuthContext);
 
   console.log(miContext);
+
+  const props = {
+    color: "red",
+    name: "Adrian",
+    country: "Argentina"
+  }
+
+  if(isLoading) return <Spinner {...props} />
+
+
   return (
     <div>
       <h1>Services</h1>

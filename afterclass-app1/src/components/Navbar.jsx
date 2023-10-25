@@ -1,12 +1,27 @@
+import { useContext } from "react";
 import {
   Navbar as NavbarBS,
   Container,
   Nav,
   NavDropdown,
+  Button,
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import { ModalContext } from "../context/Modal";
 
 const Navbar = () => {
+  const { openModal } = useContext(ModalContext);
+
+  const onOpenModal = () => {
+    openModal({
+      show: true,
+      title: "Cerrar sesión",
+      description: "¿Estás seguro que querés cerrar sesión?",
+      successText: "Si, cerrar",
+      errorText: "No, volver",
+    });
+  };
+
   return (
     <NavbarBS expand="lg" className="bg-body-tertiary">
       <Container>
@@ -18,6 +33,7 @@ const Navbar = () => {
               Users
             </NavLink>
             <Nav.Link href="#link">Link</Nav.Link>
+            <Button onClick={onOpenModal}>Cerrar sesión</Button>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

@@ -21,7 +21,7 @@ function App() {
           <Route path="/services/algo" element={<Services />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login theme={null} />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { usersService } from "../services/users";
+import { usersService } from "../../services/users";
 import { Button } from "react-bootstrap";
 
 const UserDetail = () => {
@@ -41,4 +41,4 @@ const UserDetail = () => {
   );
 };
 
-export default UserDetail;
+export { UserDetail };
